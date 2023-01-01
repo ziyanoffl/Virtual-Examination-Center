@@ -15,6 +15,7 @@ if(!isset($_SESSION['admin_username'])){
         </script>";
      }
 
+     
 if($status){
     echo "A record has been deleted!";
     header('Location: admin_profile.php');
