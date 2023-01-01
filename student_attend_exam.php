@@ -1,78 +1,71 @@
 <?php
 
-include 'con.php';
+include 'connect.php';
 
 $exam_id = $_GET['exam_id'];
 
 
-    $st_id = $_SESSION['st_id'];
+$st_id = $_SESSION['st_id'];
 
-    $sql = "SELECT * FROM exam_schedule WHERE exam_id = $exam_id";
+$sql = "SELECT * FROM exam_schedule WHERE exam_id = $exam_id";
 
-    $results = mysqli_query($con, $sql);
+$results = mysqli_query($con, $sql);
 
-    while($row = mysqli_fetch_assoc($results)){
-        $exam_title =  $row['exam_title'];
-        $exam_subtitle =  $row['exam_subtitle'];
-        
- 
-         
-     }
+while ($row = mysqli_fetch_assoc($results)) {
+    $exam_title =  $row['exam_title'];
+    $exam_subtitle =  $row['exam_subtitle'];
+}
 
 
-     $sql2 = "SELECT * FROM exam_tbl WHERE exam_id = $exam_id";
+$sql2 = "SELECT * FROM exam_tbl WHERE exam_id = $exam_id";
 
-     $results2 = mysqli_query($con, $sql2);
+$results2 = mysqli_query($con, $sql2);
 
-     while($row2=mysqli_fetch_assoc($results2)){
-        $question1 = $row2['question1'];
-        $question2 = $row2['question2'];
-        $correctans1 = $row2['qc1'];
-        $correctans2 = $row2['qc2'];
-        $ans1 = $row2['ans1'];
-        $ans2 = $row2['ans2'];
-        $ans3 = $row2['ans3'];
-        $ans4 = $row2['ans4'];
-     }
+while ($row2=mysqli_fetch_assoc($results2)) {
+    $question1 = $row2['question1'];
+    $question2 = $row2['question2'];
+    $correctans1 = $row2['qc1'];
+    $correctans2 = $row2['qc2'];
+    $ans1 = $row2['ans1'];
+    $ans2 = $row2['ans2'];
+    $ans3 = $row2['ans3'];
+    $ans4 = $row2['ans4'];
+}
 
-    if(isset($_POST['submitbtn'])){
+if (isset($_POST['submitbtn'])) {
     $stans1 = $_POST['q1'];
     $stans2 = $_POST['q2'];
-        
+
     $sql_add = "INSERT INTO `student_ans` (`exam_id`, `st_id`, `st_ans1`, `st_ans2`) VALUES ('$exam_id', '$st_id', '$stans1', '$stans2');";
-    
+
     $sql_status = mysqli_query($con, $sql_add);
 
-    header('Location student_profile.php');                   
-    }
+    header('Location student_profile.php');
+}
 
-    $sql3 = "SELECT * FROM student_ans WHERE exam_id = $exam_id AND st_id = $st_id";
- 
-     $results3 = mysqli_query($con, $sql3);
- 
-     while($row3 = mysqli_fetch_assoc($results3)){
-         $st_ans1 =  $row3['st_ans1'];
-         $st_ans2 =  $row3['st_ans2'];
-        
-           
-      }
-      
-    if(isset($st_ans1)){
-        echo '<script>alert("Exam already attended!");
+$sql3 = "SELECT * FROM student_ans WHERE exam_id = $exam_id AND st_id = $st_id";
+
+$results3 = mysqli_query($con, $sql3);
+
+while ($row3 = mysqli_fetch_assoc($results3)) {
+    $st_ans1 =  $row3['st_ans1'];
+    $st_ans2 =  $row3['st_ans2'];
+}
+
+if (isset($st_ans1)) {
+    echo '<script>alert("Exam already attended!");
         window.location.href="student_view_exam.php";</script>';
-
-    }else if(!isset($question1)){
-        echo '<script>alert("Exam is not ready yet!");
+} elseif (!isset($question1)) {
+    echo '<script>alert("Exam is not ready yet!");
         window.location.href="student_view_exam.php";</script>';
+}
 
-    }
-    
-    if(!isset($_SESSION['st_id'])){
-        echo "<script>
+if (!isset($_SESSION['st_id'])) {
+    echo "<script>
             alert('Please login to view this page!');
             window.location.href='student_login.php';
             </script>";
-         }
+}
 
 
 ?>
@@ -112,7 +105,7 @@ $exam_id = $_GET['exam_id'];
                     <?php
                         include 'student_nav.php';
 
-                        ?>
+?>
                     </ul>
                 </div>
             </div>

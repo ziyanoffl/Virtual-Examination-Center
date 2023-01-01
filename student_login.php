@@ -1,32 +1,29 @@
-<?php 
+<?php
 
-include 'con.php';
-if(isset($_POST['submitbtn'])){
+include 'connect.php';
+if (isset($_POST['submitbtn'])) {
     $email = $_POST['txtemail'];
     $password = $_POST['txtpassword'];
 
-    
+
 
 
     $sql = "SELECT * FROM `st_reg` WHERE `st_email` = '$email' AND `st_password` = '$password'";
-    
-    $status = mysqli_query($con,$sql);
+
+    $status = mysqli_query($con, $sql);
 
     $row = mysqli_num_rows($status);
 
-    if($row == 1){
-        while($findUser = mysqli_fetch_assoc($status)){
-            
+    if ($row == 1) {
+        while ($findUser = mysqli_fetch_assoc($status)) {
             $_SESSION['st_id'] = $findUser["st_id"];
-
         }
         header('Location: student_profile.php');
-
-        }else{
-            $_SESSION['login_error'] = 'ERROR! Please check your email or password';
-             }                    
+    } else {
+        $_SESSION['login_error'] = 'ERROR! Please check your email or password';
     }
-     ?>
+}
+?>
 
 
 

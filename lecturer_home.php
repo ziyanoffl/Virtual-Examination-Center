@@ -1,30 +1,29 @@
 <?php
-    include 'con.php';
+    include 'connect.php';
     $lecturerid = $_SESSION['lecturer_id'];
 
     $sql = "SELECT * FROM lecturer_reg WHERE lecturer_id = $lecturerid;";
 
     $results = mysqli_query($con, $sql);
 
-    while($row = mysqli_fetch_assoc($results)){
-       $name =  $row['lecturer_name'];
-       $address =  $row['lecturer_address'];
-       $school =  $row['lecturer_school'];
-       $email =  $row['lecturer_email'];
-       $password =  $row['lecturer_password'];
-
-        
+    while ($row = mysqli_fetch_assoc($results)) {
+        $name =  $row['lecturer_name'];
+        $address =  $row['lecturer_address'];
+        $school =  $row['lecturer_school'];
+        $email =  $row['lecturer_email'];
+        $password =  $row['lecturer_password'];
     }
 
 
 
-    if(!isset($_SESSION['lecturer_id'])){
+    if (!isset($_SESSION['lecturer_id'])) {
         echo "<script>
         alert('No users logged in! Log in to continue');
         window.location.href='lecturer_login.php';
-        </script>";    }
+        </script>";
+    }
 
-?>
+    ?>
 
 
 
@@ -61,9 +60,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <?php
-                        include 'lecturer_nav.php';
+                            include 'lecturer_nav.php';
 
-                        ?>
+    ?>
                     </ul>
                 </div>
             </div>

@@ -59,3 +59,10 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+btn.addEventListener("mouseenter", function( event ) {   
+    event.target.style.color = "white";
+  }, false);
+  btn.addEventListener("mouseleave", function( event ) {   
+    event.target.style.color = "";
+  }, false);

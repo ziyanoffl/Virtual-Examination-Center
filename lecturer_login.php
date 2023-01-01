@@ -1,21 +1,20 @@
-<?php 
+<?php
 
-include 'con.php';
-if(isset($_POST['submitbtn'])){
+include 'connect.php';
+if (isset($_POST['submitbtn'])) {
     $username = $_POST['txtusername'];
     $password = $_POST['txtpassword'];
 
-    
 
 
     $sql = "SELECT * FROM `lecturer_reg` WHERE `lecturer_email` = '$username' AND `lecturer_password` = '$password'";
-    
-    $status = mysqli_query($con,$sql);
+
+    $status = mysqli_query($con, $sql);
 
     $row = mysqli_num_rows($status);
 
-    if($row == 1){
-        while($findUser = mysqli_fetch_assoc($status)){
+    if ($row == 1) {
+        while ($findUser = mysqli_fetch_assoc($status)) {
             $_SESSION['lecturer_id'] = $findUser["lecturer_id"];
             // $_SESSION['selectedUser'] = $findUser["email"];
             // $_SESSION['selectedContact'] = $findUser["contact"];
@@ -25,7 +24,7 @@ if(isset($_POST['submitbtn'])){
             // $userId = $_SESSION['selectedUserid'];
 
             // $sql2 = "SELECT * FROM user_info WHERE user_id = '$userId'";
-    
+
             // $status2 = mysqli_query($con,$sql2);
 
             // $row2 = mysqli_num_rows($status2);
@@ -35,12 +34,11 @@ if(isset($_POST['submitbtn'])){
             // }
         }
         header('Location: lecturer_home.php');
-
-        }else{
-            $_SESSION['login_error'] = 'ERROR! Please check your email or password';
-             }                    
+    } else {
+        $_SESSION['login_error'] = 'ERROR! Please check your email or password';
     }
-     ?>
+}
+?>
 
 
 
@@ -122,7 +120,7 @@ if(isset($_POST['submitbtn'])){
                             <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error when trying to login! Try again!</div></div>
                             <!-- Submit Button-->
-                            <button name="submitbtn" class="btn btn-primary btn-xl " id="submitButton" type="submit">Send</button>
+                            <button name="submitbtn" class="btn btn-primary btn-xl" id="submitButton" onmouseover="" type="submit">Send</button>
                         </form>
                     </div>
                 </div>

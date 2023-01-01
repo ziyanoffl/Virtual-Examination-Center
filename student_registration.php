@@ -1,7 +1,7 @@
-<?php 
+<?php
 
-include 'con.php';
-if(isset($_POST['submitbtn'])){
+include 'connect.php';
+if (isset($_POST['submitbtn'])) {
     $name = $_POST['txtname'];
     $email = $_POST['txtemail'];
     $password = $_POST['txtpassword'];
@@ -10,16 +10,15 @@ if(isset($_POST['submitbtn'])){
 
 
     $sql_registration = "INSERT INTO `st_reg` (`st_id`,`st_name`,`st_address`,`st_email`, `st_dob`, `st_password`) VALUES ('', '$name', '$address', '$email', '$dob', '$password');";
-    
+
     $sql_status = mysqli_query($con, $sql_registration);
 
     echo "<script>
 alert('Account created successfully! Please log in to continue...');
 window.location.href='student_login.php';
 </script>";
-       
-    }
-     ?>
+}
+?>
 
 
 

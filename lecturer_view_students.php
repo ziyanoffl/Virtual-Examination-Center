@@ -1,19 +1,17 @@
 <?php
-    include 'con.php';
+    include 'connect.php';
     $lecturerid = $_SESSION['lecturer_id'];
 
     $sql = "SELECT * FROM lecturer_reg WHERE lecturer_id = $lecturerid;";
 
     $results = mysqli_query($con, $sql);
 
-    while($row = mysqli_fetch_assoc($results)){
-       $name =  $row['lecturer_name'];
-       $address =  $row['lecturer_address'];
-       $school =  $row['lecturer_school'];
-       $email =  $row['lecturer_email'];
-       $password =  $row['lecturer_password'];
-
-        
+    while ($row = mysqli_fetch_assoc($results)) {
+        $name =  $row['lecturer_name'];
+        $address =  $row['lecturer_address'];
+        $school =  $row['lecturer_school'];
+        $email =  $row['lecturer_email'];
+        $password =  $row['lecturer_password'];
     }
 
     // view students
@@ -22,14 +20,14 @@
 
 
 
-    if(!isset($_SESSION['lecturer_id'])){
+    if (!isset($_SESSION['lecturer_id'])) {
         echo "<script>
             alert('Please login to view this page!');
             window.location.href='lecturer_login.php';
             </script>";
-         }
+    }
 
-?>
+    ?>
 
 
 
@@ -66,9 +64,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <?php
-                        include 'lecturer_nav.php';
+                            include 'lecturer_nav.php';
 
-                        ?>
+    ?>
                     </ul>
                 </div>
             </div>
@@ -112,25 +110,23 @@
                             <tbody>
                                 
                                 <?php
-                                    while($row = mysqli_fetch_assoc($results2)){
+                while ($row = mysqli_fetch_assoc($results2)) {
+                    echo   "<tr style='vertical-align:middle';>";
+                    echo   "<td>".$row["st_id"]."</td>";
+                    echo   "<td>".$row["st_email"]."</td>";
+                    echo   "<td>".$row["st_name"]."</td>";
 
-                                    echo   "<tr style='vertical-align:middle';>";
-                                    echo   "<td>".$row["st_id"]."</td>";
-                                    echo   "<td>".$row["st_email"]."</td>";
-                                    echo   "<td>".$row["st_name"]."</td>";
 
-                                    
-                                    
 
-                                    echo "
+
+                    echo "
                                     <td><a class='btn btn-danger' data-toggle='modal' data-target='.bs-example-modal-lg' href='lecturer_delete_student.php?st_id=".$row["st_id"]."'>Delete</a>
                                     
                                     <a class='btn btn-warning' href = 'lecturer_edit_students.php?st_id=".$row["st_id"]."'>Edit</a></td>";
-                                    
-                                    echo   "</tr>"; 
-                                    
-                                    }
-                                    ?>
+
+                    echo   "</tr>";
+                }
+    ?>
                                 
                             
                             </tbody>

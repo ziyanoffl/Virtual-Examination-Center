@@ -1,13 +1,12 @@
 <?php
-    include 'con.php';
+    include 'connect.php';
     $st_id = $_SESSION['st_id'];
 
     $sql = "SELECT * FROM student_ans";
 
     $results = mysqli_query($con, $sql);
-    while($row = mysqli_fetch_assoc($results)){
-      $exam_id =  $row["exam_id"];
-
+    while ($row = mysqli_fetch_assoc($results)) {
+        $exam_id =  $row["exam_id"];
     }
 
 
@@ -15,23 +14,20 @@
 
     $results2 = mysqli_query($con, $sql2);
 
-            while($row = mysqli_fetch_assoc($results2)){
-                $exam_title =  $row['exam_title'];
-                $exam_subtitle =  $row['exam_subtitle'];
-                                        
-                                
-                                        
-                }
+    while ($row = mysqli_fetch_assoc($results2)) {
+        $exam_title =  $row['exam_title'];
+        $exam_subtitle =  $row['exam_subtitle'];
+    }
 
-                if(!isset($_SESSION['st_id'])){
-                    echo "<script>
+    if (!isset($_SESSION['st_id'])) {
+        echo "<script>
                         alert('Please login to view this page!');
                         window.location.href='student_login.php';
                         </script>";
-                     }
-    
+    }
 
-?>
+
+    ?>
 
 
 
@@ -66,9 +62,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <?php
-                        include 'student_nav.php';
+                            include 'student_nav.php';
 
-                        ?>
+    ?>
                     </ul>
                 </div>
             </div>
@@ -114,23 +110,23 @@
                             </thead>
                             <tbody>
                                 <?php
-                                
 
 
-                                 echo   "<tr style='vertical-align:middle';>";
-                                 echo   "<td>".$exam_id."</td>";
-                                                               
 
-                                 echo   "<td>".$exam_title."</td>";
-                                 echo   "<td>".$exam_subtitle."</td>";
-                                 
-                                 echo "
+             echo   "<tr style='vertical-align:middle';>";
+    echo   "<td>".$exam_id."</td>";
+
+
+    echo   "<td>".$exam_title."</td>";
+    echo   "<td>".$exam_subtitle."</td>";
+
+    echo "
                                         <a class='btn btn-primary' href = 'student_result.php?exam_id=".$row["exam_id"]."'>View results</a></td>";
-                                  
-                                 echo   "</tr>";
-                                
-                                
-                                ?>
+
+    echo   "</tr>";
+
+
+    ?>
 
                             </tbody>
                         </table>

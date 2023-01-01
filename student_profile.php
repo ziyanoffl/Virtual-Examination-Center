@@ -1,5 +1,5 @@
 <?php
-    include 'con.php';
+    include 'connect.php';
 
     $st_id = $_SESSION['st_id'];
 
@@ -7,24 +7,22 @@
 
     $results = mysqli_query($con, $sql);
 
-    while($row = mysqli_fetch_assoc($results)){
+    while ($row = mysqli_fetch_assoc($results)) {
         $name =  $row['st_name'];
         $address =  $row['st_address'];
         $dob =  $row['st_dob'];
         $email =  $row['st_email'];
         $password =  $row['st_password'];
- 
-         
-     }
+    }
 
-     if(!isset($_SESSION['st_id'])){
+    if (!isset($_SESSION['st_id'])) {
         echo "<script>
             alert('Please login to view this page!');
             window.location.href='student_login.php';
             </script>";
-         }
+    }
 
-?>
+    ?>
 
 
 
@@ -59,9 +57,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <?php
-                        include 'student_nav.php';
+                            include 'student_nav.php';
 
-                        ?>
+    ?>
                     </ul>
                 </div>
             </div>
@@ -103,7 +101,6 @@
                     <h5 class="   text-secondary  mb-5" >Password: <span style="margin-left: 1em;" id="secondtext"><?php echo $password; ?></span></h5>
 
                     <p class=""><button type="button" class="btn btn-primary " onclick="document.location='student_edit_profile.php'">Edit profile</button></p>
-
                 </div>
             </div>
         </section>

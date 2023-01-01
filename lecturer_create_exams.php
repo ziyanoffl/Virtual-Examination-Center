@@ -1,19 +1,19 @@
 <?php
 
-include 'con.php';
-if(isset($_POST['submitbtn'])){
+include 'connect.php';
+if (isset($_POST['submitbtn'])) {
     $title = $_POST['txttitle'];
     $subtitle = $_POST['txtsubtitle'];
     $startdate = $_POST['txtstart'];
     $enddate = $_POST['txtend'];
-  
-    
+
+
     $sql_add = "INSERT INTO `exam_schedule` (`exam_title`, `exam_subtitle`, `start_date`, `end_date`) VALUES ('$title', '$subtitle', '$startdate', '$enddate');";
-    
+
     $sql_status = mysqli_query($con, $sql_add);
 
-    header('Location: lecturer_view_exam.php');                   
-    }
+    header('Location: lecturer_view_exam.php');
+}
 
 
 ?>
@@ -51,7 +51,7 @@ if(isset($_POST['submitbtn'])){
                     <?php
                         include 'lecturer_nav.php';
 
-                        ?>
+?>
                     </ul>
                 </div>
             </div>

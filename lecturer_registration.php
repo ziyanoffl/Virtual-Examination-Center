@@ -1,27 +1,27 @@
 <?php
 
-include 'con.php';
+include 'connect.php';
 
 $admin_username = $_SESSION['admin_username'];
 
-if(isset($_POST['submitbtn'])){
+if (isset($_POST['submitbtn'])) {
     $email = $_POST['txtemail'];
     $password = $_POST['txtpassword'];
     $name = $_POST['txtname'];
     $address = $_POST['txtaddress'];
     $school = $_POST['txtschool'];
 
-    
+
     $sql_registration = "INSERT INTO `lecturer_reg` (`lecturer_email`,`lecturer_password`,`lecturer_name`,`lecturer_address`,`lecturer_school`) VALUES ('$email', '$password', '$name', '$address', '$school');";
-    
+
     $sql_status = mysqli_query($con, $sql_registration);
 
     echo "<script>
 alert('Account successfully created!');
 window.location.href='admin_profile.php';
-</script>";               
-    }
-if(!isset($admin_username)){
+</script>";
+}
+if (!isset($admin_username)) {
     echo "<script>
 alert('Please log in to register new Lecturers!!');
 window.location.href='admin_login.php';
@@ -69,7 +69,7 @@ window.location.href='admin_login.php';
                     <?php
                         include 'admin_nav.php';
 
-                        ?>
+?>
                     </ul>
                 </div>
             </div>

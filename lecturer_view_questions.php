@@ -1,52 +1,49 @@
 <?php
 
-include 'con.php';
+include 'connect.php';
 
 $exam_id = $_GET['exam_id'];
 
 
 
-    $sql = "SELECT * FROM exam_schedule WHERE exam_id = $exam_id";
+$sql = "SELECT * FROM exam_schedule WHERE exam_id = $exam_id";
 
-    $results = mysqli_query($con, $sql);
+$results = mysqli_query($con, $sql);
 
-    while($row = mysqli_fetch_assoc($results)){
-        $exam_title =  $row['exam_title'];
-        $exam_subtitle =  $row['exam_subtitle'];
-        
- 
-         
-     }
+while ($row = mysqli_fetch_assoc($results)) {
+    $exam_title =  $row['exam_title'];
+    $exam_subtitle =  $row['exam_subtitle'];
+}
 
 
-     $sql2 = "SELECT * FROM exam_tbl WHERE exam_id = $exam_id";
+$sql2 = "SELECT * FROM exam_tbl WHERE exam_id = $exam_id";
 
-     $results2 = mysqli_query($con, $sql2);
+$results2 = mysqli_query($con, $sql2);
 
-     while($row2=mysqli_fetch_assoc($results2)){
-        $question1 = $row2['question1'];
-        $question2 = $row2['question2'];
-        $correctans1 = $row2['qc1'];
-        $correctans2 = $row2['qc2'];
-        $ans1 = $row2['ans1'];
-        $ans2 = $row2['ans2'];
-        $ans3 = $row2['ans3'];
-        $ans4 = $row2['ans4'];
-     }
+while ($row2=mysqli_fetch_assoc($results2)) {
+    $question1 = $row2['question1'];
+    $question2 = $row2['question2'];
+    $correctans1 = $row2['qc1'];
+    $correctans2 = $row2['qc2'];
+    $ans1 = $row2['ans1'];
+    $ans2 = $row2['ans2'];
+    $ans3 = $row2['ans3'];
+    $ans4 = $row2['ans4'];
+}
 
-    if(!isset($question1)){
-        echo "<script>
+if (!isset($question1)) {
+    echo "<script>
         alert('No questions available! Please add questions for this exam!');
         window.location.href='lecturer_view_exam.php';
         </script>";
-    }
+}
 
-    if(!isset($_SESSION['lecturer_id'])){
-        echo "<script>
+if (!isset($_SESSION['lecturer_id'])) {
+    echo "<script>
             alert('Please login to view this page!');
             window.location.href='lecturer_login.php';
             </script>";
-         }
+}
 
 
 ?>
@@ -86,7 +83,7 @@ $exam_id = $_GET['exam_id'];
                     <?php
                         include 'lecturer_nav.php';
 
-                        ?>
+?>
                     </ul>
                 </div>
             </div>

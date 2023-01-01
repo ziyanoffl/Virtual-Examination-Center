@@ -1,5 +1,5 @@
 <?php
-    include 'con.php';
+    include 'connect.php';
 
     $sql = "SELECT * FROM lecturer_reg";
 
@@ -10,14 +10,14 @@
 
 
 
-    if(!isset($_SESSION['admin_username'])){
+    if (!isset($_SESSION['admin_username'])) {
         echo "<script>
             alert('Please login to view this page!');
             window.location.href='admin_login.php';
             </script>";
-         }
+    }
 
-?>
+    ?>
 
 
 
@@ -54,9 +54,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <?php
-                        include 'admin_nav.php';
+                            include 'admin_nav.php';
 
-                        ?>
+    ?>
                     </ul>
                 </div>
             </div>
@@ -102,21 +102,20 @@
                             </thead>
                             <tbody>
                                 <?php
-                                while($row = mysqli_fetch_assoc($results)){
+            while ($row = mysqli_fetch_assoc($results)) {
+                echo   "<tr style='vertical-align:middle';>";
+                echo   "<td>".$row["lecturer_id"]."</td>";
+                echo   "<td>".$row["lecturer_name"]."</td>";
+                echo   "<td>".$row["lecturer_school"]."</td>";
 
-                                 echo   "<tr style='vertical-align:middle';>";
-                                 echo   "<td>".$row["lecturer_id"]."</td>";
-                                 echo   "<td>".$row["lecturer_name"]."</td>";
-                                 echo   "<td>".$row["lecturer_school"]."</td>";
-
-                                 echo "
+                echo "
                                         <td><a class='btn btn-danger' href='admin_delete_lecturer.php?lecturer_id=".$row["lecturer_id"]."'>Delete</a>
                                         <a class='btn btn-warning' href = 'admin_edit_lecturer.php?lecturer_id=".$row["lecturer_id"]."'>Edit</a></td>";
-                                  
-                                 echo   "</tr>";
-                                }
-                                
-                                ?>
+
+                echo   "</tr>";
+            }
+
+    ?>
 
                             </tbody>
                         </table>
@@ -153,22 +152,21 @@
                             <tbody>
                                 
                             <?php
-                                while($row = mysqli_fetch_assoc($results2)){
+    while ($row = mysqli_fetch_assoc($results2)) {
+        echo   "<tr style='vertical-align:middle';>";
+        echo   "<td>".$row["st_id"]."</td>";
+        echo   "<td>".$row["st_name"]."</td>";
+        echo   "<td>".$row["st_email"]."</td>";
 
-                                 echo   "<tr style='vertical-align:middle';>";
-                                 echo   "<td>".$row["st_id"]."</td>";
-                                 echo   "<td>".$row["st_name"]."</td>";
-                                 echo   "<td>".$row["st_email"]."</td>";
-                                 
 
-                                 echo "
+        echo "
                                  <td><a class='btn btn-danger' href='admin_delete_student.php?st_id=".$row["st_id"]."'>Delete</a>
                                  <a class='btn btn-warning' href = 'admin_edit_student.php?st_id=".$row["st_id"]."'>Edit</a></td>";
-                                  
-                                 echo   "</tr>";
-                                }
-                                
-                                ?>
+
+        echo   "</tr>";
+    }
+
+    ?>
                             
                             </tbody>
                         </table>

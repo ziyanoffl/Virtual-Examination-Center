@@ -1,6 +1,6 @@
 <?php
 
-include 'con.php';
+include 'connect.php';
 
 
 
@@ -10,44 +10,39 @@ $sql = "SELECT * FROM lecturer_reg WHERE lecturer_id = $lecturer_id";
 
 $results = mysqli_query($con, $sql);
 
-while($row = mysqli_fetch_assoc($results)){
+while ($row = mysqli_fetch_assoc($results)) {
     $email = $row['lecturer_email'];
     $password = $row['lecturer_password'];
     $name = $row['lecturer_name'];
     $address = $row['lecturer_address'];
     $school = $row['lecturer_school'];
-
-        
-         
-     }
+}
 
 
-if(isset($_POST['submitbtn'])){
+if (isset($_POST['submitbtn'])) {
     $edited_email = $_POST['txtemail'];
     $edited_password = $_POST['txtpassword'];
     $edited_name = $_POST['txtname'];
     $edited_address = $_POST['txtaddress'];
     $edited_school = $_POST['txtschool'];
 
-    
+
     $sql_registration = "UPDATE `lecturer_reg` SET `lecturer_name` = '$edited_name', `lecturer_address` = '$edited_address', `lecturer_school` = '$edited_school', `lecturer_email` = '$edited_email', `lecturer_password` = '$edited_password' WHERE `lecturer_reg`.`lecturer_id` = '$lecturer_id';";
-    
+
     $sql_status = mysqli_query($con, $sql_registration);
 
     echo "<script>
 alert('Edit successful!');
 window.location.href='lecturer_home.php';
 </script>";
+}
 
-                       
-    }
-
-    if(!isset($_SESSION['lecturer_id'])){
-        echo "<script>
+if (!isset($_SESSION['lecturer_id'])) {
+    echo "<script>
             alert('Please login to view this page!');
             window.location.href='lecturer_login.php';
             </script>";
-         }
+}
 
 
 ?>
@@ -91,7 +86,7 @@ window.location.href='lecturer_home.php';
                     <?php
                         include 'lecturer_nav.php';
 
-                        ?>
+?>
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-include 'con.php';
+include 'connect.php';
 
 $Id = $_GET['lecturer_id'];
 

@@ -1,5 +1,5 @@
 <?php
-    include 'con.php';
+    include 'connect.php';
 
     $sql = "SELECT * FROM exam_schedule";
 
@@ -9,15 +9,15 @@
     // $results2 = mysqli_query($con, $sql2);
 
 
-    if(!isset($_SESSION['admin_username'])){
+    if (!isset($_SESSION['admin_username'])) {
         echo "<script>
             alert('Please login to view this page!');
             window.location.href='admin_login.php';
             </script>";
-         }
-    
+    }
 
-?>
+
+    ?>
 
 
 
@@ -52,9 +52,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <?php
-                        include 'admin_nav.php';
+                            include 'admin_nav.php';
 
-                        ?>
+    ?>
                     </ul>
                 </div>
             </div>
@@ -102,23 +102,22 @@
                             </thead>
                             <tbody>
                                 <?php
-                                while($row = mysqli_fetch_assoc($results)){
+            while ($row = mysqli_fetch_assoc($results)) {
+                echo   "<tr style='vertical-align:middle';>";
+                echo   "<td>".$row["exam_id"]."</td>";
+                echo   "<td>".$row["exam_title"]."</td>";
+                echo   "<td>".$row["exam_subtitle"]."</td>";
+                echo   "<td>".$row["start_date"]."</td>";
+                echo   "<td>".$row["end_date"]."</td>";
 
-                                 echo   "<tr style='vertical-align:middle';>";
-                                 echo   "<td>".$row["exam_id"]."</td>";
-                                 echo   "<td>".$row["exam_title"]."</td>";
-                                 echo   "<td>".$row["exam_subtitle"]."</td>";
-                                 echo   "<td>".$row["start_date"]."</td>";
-                                 echo   "<td>".$row["end_date"]."</td>";
-
-                                 echo "
+                echo "
                                         <td><a class='btn btn-danger' href='lecturer_delete_exam.php?exam_id=".$row["exam_id"]."'>DELETE</a>
                                         <a class='btn btn-warning' href = 'admin_view_questions.php?exam_id=".$row["exam_id"]."'>VIEW QUESTIONS</a></td>";
-                                  
-                                 echo   "</tr>";
-                                }
-                                
-                                ?>
+
+                echo   "</tr>";
+            }
+
+    ?>
 
                             </tbody>
                         </table>
