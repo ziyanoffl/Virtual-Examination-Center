@@ -7,6 +7,3 @@ $pass = '';
 $database = 'website_db';
 
 $con = mysqli_connect($host,$userName,$pass,$database);
-
-
-?>
