@@ -19,9 +19,6 @@
 
     ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,24 +99,23 @@
                             </thead>
                             <tbody>
                                 <?php
-            while ($row = mysqli_fetch_assoc($results)) {
-                echo   "<tr style='vertical-align:middle';>";
-                echo   "<td>".$row["lecturer_id"]."</td>";
-                echo   "<td>".$row["lecturer_name"]."</td>";
-                echo   "<td>".$row["lecturer_school"]."</td>";
+                                    while ($row = mysqli_fetch_assoc($results)) 
+                                    {
+                                        echo   "<tr style='vertical-align:middle';>";
+                                        echo   "<td>".$row["lecturer_id"]."</td>";
+                                        echo   "<td>".$row["lecturer_name"]."</td>";
+                                        echo   "<td>".$row["lecturer_school"]."</td>";
 
-                echo "
-                                        <td><a class='btn btn-danger' href='admin_delete_lecturer.php?lecturer_id=".$row["lecturer_id"]."'>Delete</a>
-                                        <a class='btn btn-warning' href = 'admin_edit_lecturer.php?lecturer_id=".$row["lecturer_id"]."'>Edit</a></td>";
+                                        echo "
+                                                <td><a class='btn btn-danger' href='admin_delete_lecturer.php?lecturer_id=".$row["lecturer_id"]."'>Delete</a>
+                                                <a class='btn btn-warning' href = 'admin_edit_lecturer.php?lecturer_id=".$row["lecturer_id"]."'>Edit</a></td>";
 
-                echo   "</tr>";
-            }
-
-    ?>
-
+                                        echo   "</tr>";
+                                    }
+                                ?>
                             </tbody>
                         </table>
-                            </p>
+                    </p>
                             
 
 
@@ -152,21 +148,20 @@
                             <tbody>
                                 
                             <?php
-    while ($row = mysqli_fetch_assoc($results2)) {
-        echo   "<tr style='vertical-align:middle';>";
-        echo   "<td>".$row["st_id"]."</td>";
-        echo   "<td>".$row["st_name"]."</td>";
-        echo   "<td>".$row["st_email"]."</td>";
+                                while ($row = mysqli_fetch_assoc($results2)) 
+                                {
+                                    echo   "<tr style='vertical-align:middle';>";
+                                    echo   "<td>".$row["st_id"]."</td>";
+                                    echo   "<td>".$row["st_name"]."</td>";
+                                    echo   "<td>".$row["st_email"]."</td>";
+                                    echo   "
+                                            <td><a class='btn btn-danger' href='admin_delete_student.php?st_id=".$row["st_id"]."'>Delete</a>
+                                            <a class='btn btn-warning' href = 'admin_edit_student.php?st_id=".$row["st_id"]."'>Edit</a></td>";
 
+                                    echo   "</tr>";
+                                }
 
-        echo "
-                                 <td><a class='btn btn-danger' href='admin_delete_student.php?st_id=".$row["st_id"]."'>Delete</a>
-                                 <a class='btn btn-warning' href = 'admin_edit_student.php?st_id=".$row["st_id"]."'>Edit</a></td>";
-
-        echo   "</tr>";
-    }
-
-    ?>
+                            ?>
                             
                             </tbody>
                         </table>
